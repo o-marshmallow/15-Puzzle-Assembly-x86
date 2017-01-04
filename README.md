@@ -1,7 +1,7 @@
 # 15-Puzzle-Assembly-x86
 
 ## Introduction:
-   This is an implementation of the 15-Puzzle game written in x86 assembly. x86 assembly has been for a compatibility with Intel 32-bit processor.
+   This is an implementation of the 15-Puzzle game written in x86 assembly. x86 assembly has been used for a full compatibility with Intel 32-bit processors.
 
 ## Assembling:
    You simply need to execute the following command:
