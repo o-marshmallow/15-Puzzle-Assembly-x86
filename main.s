@@ -21,7 +21,8 @@ _start:
         pop %eax
         call fillPuzzle         # Fill the puzzle with array[i] = i+1
         call shufflePuzzle
-turn:   call showPuzzle
+turn:   call clearScreen
+        call showPuzzle
         call isFinished         # Test whether the puzzle is finished
         cmp %eax, 0
         jne wonmsg
@@ -106,8 +107,22 @@ playexit:
         pop %ebx
         pop %ebp
         ret
+
+clearScreen:
+        push %ebp
+        mov %ebp, %esp
+        push %ebx
+        mov %eax, 4
+        mov %ebx, 1
+        lea %ecx, clearstr
+        mov %edx, 7
+        int 0x80
+        pop %ebx
+        pop %ebp
+        ret
         
 command:        .asciz "Controls: u (Up), d (Down), l (Left), r (Right)\n"
 welcome:        .asciz "Solve the following puzzle:\n"
 whattodo:       .asciz "Move:\n"
 won:            .asciz "You won!\n"
+clearstr:       .byte  0x1b, 0x5b, 0x48, 0x1b, 0x5b, 0x32, 0x4a 
